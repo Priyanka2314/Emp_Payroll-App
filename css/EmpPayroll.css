@@ -26,8 +26,6 @@ body{
     
 }
 .logo-content-img{
-    height: 5px;
-    width: 500px;
     border: solid 0px #42515f;
     
 }
@@ -104,4 +102,19 @@ label {
     border-radius: 4px;
     resize: vertical;
 }
-
+/* Uc 3 */
+.profile-radio-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile-radio-content > label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 12px;
+}
