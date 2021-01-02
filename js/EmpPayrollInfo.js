@@ -7,7 +7,12 @@ class EmployeePayroll{
   
   get name(){ return this._name; }
   set name(name){
-    this._name=name;
+    //UC10 - validating only name with min 3 letters & first letter caps is allowed
+    let nameRegrx = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$');
+    if(nameRegrx.test(name))
+      this._name =name;
+    else
+      throw "Name is InCorrect";
   }
   
   get profilePic(){ return this._profilePic; }
@@ -37,7 +42,14 @@ class EmployeePayroll{
   
   get startDate() { return this._startDate; }
   set startDate(startDate) {
-      this._startDate =startDate;
+    //UC10 - date func will provide todays date
+    let currentDate = new Date();
+    if(startDate > currentDate)
+     throw 'start date is a future date';
+    let diff = Math.abs(currentDate.getTime()-startDate.getTime())  ;
+    if(diff / (1000 * 60 * 60 * 24) > 30)
+     throw 'Start Date is beyond 30 days';
+    this._startDate = startDate;
   }
   //method
   toString(){
@@ -51,4 +63,4 @@ class EmployeePayroll{
   return "id = "+this.id+ " ,name = "+this.name+" , gender ="+this.gender+" , profilePic ="+this.profilePic+" , department ="+this.department+
           " ,salary = "+ this.salary+ " ,startDate = "+empDate+ ",note =" +this.note;
   }
-  }
+}

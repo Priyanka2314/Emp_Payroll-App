@@ -8,7 +8,7 @@
     <title>Employee payroll form</title>
     <!--UC8 reference-->
     <script defer src="../js/EmpPayroll.js"></script>
-    <!--UC9 reference-->
+    <!--UC9 & UC10 reference-->
     <script defer src="../js/EmpPayrollInfo.js"></script>
 </head>
 <body>
@@ -30,6 +30,7 @@
 <div class="row-content">
 <label class="label text" for="name">Name</label>
 <input class="input" type="text" id="name" name="name" placeholder="Your name.." required>
+<error-output class="text-error" for="text"></error-output>
 </div>
 <!--UC 3-->
 <div class="row-content">
@@ -143,6 +144,7 @@
       <option value="2016">2016</option>
   </select>
 </div>
+<error-output class="date-error" for="startDate"></error-output>
 </div>
 <!--UC 6-->
 <div class="row-content">

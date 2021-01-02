@@ -223,3 +223,9 @@ select{
       align-items: flex-start;
   }
 }
+/*UC 10 */
+error-output{
+  font-size: 12px;
+  font-style: italic;
+  color: red;
+}
