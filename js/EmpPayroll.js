@@ -59,9 +59,25 @@ getInputValueById('#year');
 const save = () => {
   try{
     let employeePayRollData = createEmployeePayroll();
+    //UC14
+    createAndUpdateStorage(employeePayRollData);
   }catch(e){
     return;
   }
+}
+
+//UC14: Local storage
+function createAndUpdateStorage(employeePayRollData){
+
+  let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+
+  if(employeePayrollList!=undefined){
+    employeePayrollList.push(employeePayRollData);
+  }else{
+    employeePayrollList = [employeePayRollData]
+  }
+  alert(employeePayrollList.toString());
+  localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
 }
 
 const createEmployeePayroll = () =>{
