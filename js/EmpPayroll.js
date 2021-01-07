@@ -131,7 +131,7 @@ const getSelectedValues = (propertyValue) => {
     return value;
   }
 
-  //Instead of reset method we can call form button reset
+  //UC15 Instead of reset method we can call form button reset
 
   const restForm =() =>{
     setValue('#name','');
