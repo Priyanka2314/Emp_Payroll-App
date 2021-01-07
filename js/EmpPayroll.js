@@ -42,7 +42,7 @@ const getInputValueById = (id) => {
 let value = document.querySelector(id).value;
   return value;
 }
-date.addEventListener('click', function () {
+date.addEventListener('input', function () {
 let startDate = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
 getInputValueById('#year');
   try {
@@ -54,6 +54,67 @@ getInputValueById('#year');
 
   });
 });
+
+//UC13 - Create Employee Payroll object on save
+const save = () => {
+  try{
+    let employeePayRollData = createEmployeePayroll();
+  }catch(e){
+    return;
+  }
+}
+
+const createEmployeePayroll = () =>{
+  let employeePayRollData = new EmployeePayroll();
+  try{
+    employeePayRollData.name = getInputValueById('#name');
+  }catch(e){
+    setTextValue('.text-error',e);
+    throw e;
+  }
+  employeePayRollData.profilePic = getSelectedValues('[name=profile]').pop();
+  employeePayRollData.gender = getSelectedValues('[name=gender]').pop();
+  employeePayRollData.department = getSelectedValues('[name=department]');
+  employeePayRollData.salary = getInputValueById('#salary');
+  employeePayRollData.note =getInputValueById('#notes');
+  let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+ getInputValueById('#year');
+  employeePayRollData.date =Date.parse(date);
+  alert(employeePayRollData.toString());
+  return employeePayRollData;
+}
+
+const getSelectedValues = (propertyValue) => {
+  let allItems = document.querySelectorAll(propertyValue);
+  let setItems = [];
+  allItems.forEach(item => {
+    if(item.checked) 
+     setItems.push(item.value);
+  });
+  return setItems;
+}
+
+/**
+ * 1: queryselector is the newer feature.
+ * 2: The queyselector method can be used when selecting by element name, nesting, or class name.
+ * 3: querySelector lets you find elements with rules that can't be expressed with getElementById
+ */
+
+ const getInputValueById =(id) =>{
+   let value = document.querySelector(id).value;
+   return value;
+ }
+
+ /**
+  * 1: getElementById is better supported than querySelector in older versions
+  *    of the browsers.
+  * 2: The thing with getElementById is that it only allows to select an element by its id.
+  */
+
+  const getInputElementValue = (id) =>{
+    let value = document.getElementById(id).value;
+    return value;
+  }
+
 
 
 
